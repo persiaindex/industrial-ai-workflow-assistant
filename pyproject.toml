@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "industrial-ai-workflow-assistant"
+version = "0.1.0"
+description = "Production-oriented industrial AI workflow assistant using RAG, FastAPI, and tool-based automation."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+    "pydantic-settings",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "httpx",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+exclude = ["data*", "docs*", "tests*"]
+namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
